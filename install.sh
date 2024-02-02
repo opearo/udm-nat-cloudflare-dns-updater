@@ -55,7 +55,7 @@ crontab_file="${DATA_DIR}/cronjobs/${SCRIPT_NAME%???}"
 
 # create crontab file
 > "${crontab_file}"
-printf 'CDNS_HOSTNAME="%s"\n' "${hostvar}" >> "${crontab_file}"
+printf 'CDNS_HOSTNAME="%s"\n' "${dns_name}" >> "${crontab_file}"
 printf 'CDNS_TOKEN="%s"\n' "${passvar}" >> "${crontab_file}"
 printf 'CDNS_RECORD_ID="%s"\n' "${dns_record_id}" >> "${crontab_file}"
 printf 'CDNS_ZONE_ID="%s"\n' "${zone_id}" >> "${crontab_file}"
