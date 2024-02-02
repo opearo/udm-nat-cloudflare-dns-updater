@@ -20,7 +20,7 @@ update_comment="updated via udm-nat-cloudflare-dns-updater @ $(date -u +'%Y-%m-%
 update_response=$(
   curl -s -H "Authorization: Bearer ${CDNS_TOKEN}" \
 	-XPUT "https://api.cloudflare.com/client/v4/zones/${CDNS_ZONE_ID}/dns_records/${CDNS_RECORD_ID}" \
-	-d '{"content":"${current_ip}","name":"${CDNS_HOSTNAME}","type": "A","comment": "${update_comment}","ttl": 60}'
+	-d "{\"content\":\"${current_ip}\",\"name\":\"${CDNS_HOSTNAME}\",\"type\":\"A\",\"comment\":\"${update_comment}\",\"ttl\":60}"
 )
 
 if ! echo "${update_response}" | jq -e 'select(.success == true)' >/dev/null 2>&1;then
